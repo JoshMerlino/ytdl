@@ -9,7 +9,7 @@ export function parseAudioQuality(audioQuality: string | undefined): string {
 
 export default function DownloadLink({ format }: DownloadLinkProps): JSX.Element {
 	return (
-		<li className="h-12 flex items-center px-4 hover:bg-neutral-500/10 cursor-pointer group">
+		<li className="h-12 flex items-center px-4 hover:bg-neutral-500/10 cursor-default group">
 			<div className="font-semibold basis-1/4">{ format.qualityLabel || parseAudioQuality(format.audioQuality) } </div>
 			<div className="grow font-mono opacity-75"> { format.container }</div>
 			<div className="group-hover:block md:hidden">
