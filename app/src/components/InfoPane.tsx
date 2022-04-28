@@ -28,8 +28,9 @@ export default function InfoPane({ state, containerRef }: InfoPaneProps): JSX.El
 	}, [ ]);
 
 	return (
-		<div className="px-2 max-w-full lg:max-w-[480px] w-full" ref={ spacerRef }>
+		<div className="px-2 max-w-full lg:max-w-[480px] w-full relative" ref={ spacerRef }>
 			<img src={ state.info.videoDetails.thumbnails.sort((a, b) => b.width - a.width)[0].url } alt="" className="select-none rounded-2xl border-[1px] border-neutral-200 dark:border-neutral-700 w-full" />
+			<div className="bg-black/75 absolute right-3 -mt-6 text-white font-medium text-sm tracking-wide px-1 rounded-md">{ Math.floor(parseInt(state.info.videoDetails.lengthSeconds) / 60) }:{ (parseInt(state.info.videoDetails.lengthSeconds) % 60).toString().padStart(2, "0") }</div>
 			<div className="rounded-2xl border-[1px] border-neutral-200 dark:border-neutral-700 px-4 my-4 bg-white dark:bg-zinc-800">
 				<h1 className="text-2xl font-semibold truncate py-3 dark:text-white">{ state.info.videoDetails.title }</h1>
 				<div className="flex border-t-[1px] -mx-4 border-neutral-200 dark:border-neutral-700 px-4 py-2">
