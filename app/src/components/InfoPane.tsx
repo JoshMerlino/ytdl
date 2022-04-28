@@ -10,10 +10,15 @@ export default function InfoPane({ state, containerRef }: InfoPaneProps): JSX.El
 
 	useEffect(() => {
 		let mounted = true;
+		let lastHeight = -1;
 		(function animation() {
 			if (mounted) requestAnimationFrame(animation);
 			const height = window.innerWidth >= 1024 ? containerRef.current?.scrollTop || 0 : 0;
-			spacerRef.current!.style.paddingTop = `${ height }px`;
+			if (lastHeight !== height) {
+				lastHeight = height;
+				document.getElementById("banner")!.style.opacity = height > 0 || window.innerWidth < 1024 ? "1" : "0";
+				spacerRef.current!.style.paddingTop = `${ height }px`;
+			}
 		}());
 		return () => {
 			mounted = false;
