@@ -1,14 +1,12 @@
 import FilePane from "./FilePane";
 import InfoPane from "./InfoPane";
 
-export type ContentProps = { state: CompleteState };
+export type ContentProps = { state: CompleteState, containerRef: React.RefObject<HTMLDivElement> };
 
-export default function Content({ state }: ContentProps): JSX.Element {
+export default function Content({ state, containerRef }: ContentProps): JSX.Element {
 	return (
 		<>
-			<InfoPane state={ state }/>
-			{ /* <div className="basis-full md:basis-0"></div>
-			 */ }
+			<InfoPane state={ state } containerRef={ containerRef }/>
 			<FilePane state={ state }/>
 		</>
 	);

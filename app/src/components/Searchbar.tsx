@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { CgSearch, AiOutlineLoading3Quarters } from "react-icons/all";
 import { apiroot } from "../../manifest.json";
 
@@ -11,7 +11,7 @@ export default function Searchbar({ setState, state }: SearchbarProps): JSX.Elem
 
 	const ref = useRef<HTMLInputElement>(null);
 
-	function search() {
+	async function search() {
 
 		// Get url from input
 		const value = ref.current?.value;
@@ -21,10 +21,22 @@ export default function Searchbar({ setState, state }: SearchbarProps): JSX.Elem
 		setState(null);
 
 		// Validate url
-		fetch(apiroot + "/validate?url=" + encodeURIComponent(value))
+		await fetch(apiroot + "/validate?url=" + encodeURIComponent(value))
 			.then(res => res.json())
-			.then(res => setState(res));
+			.then(state => {
+				console.log(state);
+				if (state && state.success) window.history.pushState(null, "", "/" + state.info.videoDetails.videoId);
+				setState(state);
+			});
+
 	}
+
+	useEffect(function() {
+		if (location.pathname !== "/") {
+			ref.current!.value = location.pathname.substring(1);
+			search();
+		}
+	}, []);
 
 	return (
 		<div className="h-16 flex border-[1px] border-neutral-200 dark:border-neutral-700 border-r-0 bg-white dark:bg-zinc-800 max-w-[600px] w-full md:w-[90%] lg:w-[80%] text-2xl mb-2 rounded-2xl" style={ { borderTopRightRadius: 48, borderBottomRightRadius: 48 } }>
