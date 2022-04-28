@@ -5,9 +5,11 @@ export type ContentProps = { state: CompleteState };
 
 export default function Content({ state }: ContentProps): JSX.Element {
 	return (
-		<div className="flex flex-wrap">
+		<>
 			<InfoPane state={ state }/>
+			{ /* <div className="basis-full md:basis-0"></div>
+			 */ }
 			<FilePane state={ state }/>
-		</div>
+		</>
 	);
 }
