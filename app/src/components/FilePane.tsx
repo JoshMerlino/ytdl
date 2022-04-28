@@ -1,7 +1,6 @@
 /* eslint-disable no-extra-parens */
 import { useRef } from "react";
-import AudioDownloads from "./AudioDownloads";
-import VideoDownloads from "./VideoDownloads";
+import DownloadLinks from "./DownloadLinks";
 
 export type FilePaneProps = { state: CompleteState };
 
@@ -27,17 +26,17 @@ export default function FilePane({ state }: FilePaneProps): JSX.Element {
 		<div className="px-2 w-full">
 			<div className="rounded-2xl border-[1px] border-neutral-200 dark:border-neutral-700 bg-white dark:bg-zinc-800 overflow-hidden">
 				<ul className="flex h-12 font-semibold border-b-[1px] border-neutral-200 dark:border-neutral-700 relative">
-					<li className="flex items-center uppercase tracking-widest cursor-pointer text-rose-500 px-4 text-sm" onClick={ e => tabsClick(e) }>Video</li>
-					<li className="flex items-center uppercase tracking-widest cursor-pointer text-rose-500 px-4 text-sm" onClick={ e => tabsClick(e) }>Audio Only</li>
+					<li className="flex items-center uppercase tracking-widest cursor-pointer text-rose-500 px-4 text-sm select-none hover:bg-rose-500/5" onClick={ e => tabsClick(e) }>Video</li>
+					<li className="flex items-center uppercase tracking-widest cursor-pointer text-rose-500 px-4 text-sm select-none hover:bg-rose-500/5" onClick={ e => tabsClick(e) }>Audio Only</li>
 					<div ref={ tabsUnderlineRef } className="bg-rose-500 h-[2px] absolute bottom-[-1px] transition-[left,width]" style={ { width: 80, left: 0 } }/>
 				</ul>
 				<div className="overflow-hidden whitespace-nowrap">
-					<div ref={ tabContentRef } className="transition-[height,transform]" style={ { height: (tabContentRef.current?.childNodes[0] as HTMLDivElement)?.clientHeight || 0 } }>
+					<div ref={ tabContentRef } className="transition-[height,transform]">
 						<div className="w-full align-top inline-block">
-							<VideoDownloads state={ state }/>
+							<DownloadLinks state={ state } filter="video"/>
 						</div>
 						<div className="w-full align-top inline-block">
-							<AudioDownloads state={ state }/>
+							<DownloadLinks state={ state } filter="audio"/>
 						</div>
 					</div>
 				</div>

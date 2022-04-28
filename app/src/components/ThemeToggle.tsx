@@ -32,7 +32,7 @@ export default function ThemeToggle(): JSX.Element {
 	}
 
 	return (
-		<div onClick={ nextState } className="relative m-2 rounded-full h-8 py-1 px-4 text-2xl inline-flex w-48 items-center font-semibold cursor-pointer bg-white hover:bg-neutral-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-white ml-auto z-[3]">
+		<div onClick={ nextState } className="relative m-2 rounded-full h-8 py-1 px-4 text-2xl inline-flex w-48 items-center font-semibold cursor-pointer bg-white hover:bg-neutral-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-white ml-auto z-[3] border-[1px] border-neutral-200 dark:border-neutral-700">
 			{ state === "AUTO" && <MdOutlineBrightnessAuto className="mr-2"/> }
 			{ state === "DARK" && <MdOutlineDarkMode className="mr-2"/> }
 			{ state === "LIGHT" && <BsBrightnessHigh className="mr-2"/> }

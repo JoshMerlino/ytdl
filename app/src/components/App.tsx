@@ -18,7 +18,7 @@ export default function App(): JSX.Element {
 				<h1 className="text-3xl font-semibold mb-6 dark:text-white z-[3]">YouTube Downloader</h1>
 				<Searchbar setState={ setState } state={ state }/>
 				<div className={ classnames("transition-all relative mt-4 w-full", state === null || !state ? "h-0" : state && state.success ? "h-full overflow-auto" : "h-16 overflow-hidden") } ref={ containerRef }>
-					<div className="w-[1440px] sm:max-w-full md:max-w-[90%] lg:max-w-[80%] mx-auto max-w-full flex flex-wrap lg:flex-nowrap pb-4 pt-4">
+					<div className="w-[1440px] sm:max-w-full md:max-w-[90%] lg:max-w-[80%] mx-auto max-w-full flex flex-wrap lg:flex-nowrap py-2">
 						{ state && state?.success === false && <ErrorMessage error={ state.error }/> }
 						{ state && state?.success === true && <Content state={ state } containerRef={ containerRef }/> }
 					</div>
