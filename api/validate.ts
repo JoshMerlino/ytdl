@@ -12,7 +12,7 @@ export const hash = (str: string): string => createHash("md5")
 	.update(str)
 	.digest("hex");
 
-const ip = "71.162.185.54";
+const ip = "xxx.xxx.xxx.xxx";
 const hashedIp = hash(ip);
 
 export default async function api(req: Request, res: Response): Promise<void> {
