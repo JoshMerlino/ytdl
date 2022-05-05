@@ -27,14 +27,13 @@ jobs:
 
       - name: Build
         run: |
+          git submodule update --init --recursive
           npm ci
           npm run build
-
       - name: Configure git user
         run: |
           hub config --global user.name "github-actions[bot]"
           hub config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
       - name: Push
         run: |
           cd public_html
@@ -44,4 +43,3 @@ jobs:
           echo hub remote add output https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
           hub remote add output https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
           hub push -fu output public_html
-
