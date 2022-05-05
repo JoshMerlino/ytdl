@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { CgSearch, AiOutlineLoading3Quarters } from "react-icons/all";
+import { CgSearch } from "react-icons/cg";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { base, apiroot } from "../../manifest.json";
 
 export type SearchbarProps = {
