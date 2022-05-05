@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import { Request, Response } from "express";
 import ytdl from "ytdl-core";
 import https from "https";
@@ -8,7 +9,7 @@ export const route = [
 	"ytdl/v1/download"
 ];
 
-export const slug = (str: string) => str
+export const slug = (str: string): string => str
 	.replace(/\s/g, "_")
 	.replace(/_{1,}/g, "_")
 	.replace(/\(|\)|\\|\/|\[|\]|\}|\{/g, "");
@@ -31,9 +32,9 @@ export default async function api(req: Request, res: Response): Promise<void> {
 			incoming.pipe(res);
 		}).end();
 
-	} catch (e) {
+	} catch (e: unknown) {
 		console.error(e);
-		res.json({ success: false, error: e.toString() });
+		res.json({ success: false, error: (<Error>e).toString() });
 	}
 
 }

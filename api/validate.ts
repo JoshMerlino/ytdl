@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import { createHash } from "crypto";
 import { Request, Response } from "express";
 import ytdl from "ytdl-core";
@@ -7,7 +8,7 @@ export const route = [
 	"ytdl/v1/validate"
 ];
 
-export const hash = (str: string) => createHash("md5")
+export const hash = (str: string): string => createHash("md5")
 	.update(str)
 	.digest("hex");
 
@@ -19,8 +20,8 @@ export default async function api(req: Request, res: Response): Promise<void> {
 	try {
 		const info = await ytdl.getInfo(url);
 		res.json({ success: true, info: { ...info, formats: info.formats.map(f => ({ ...f, url: f.url.replace(ip, hashedIp) }))} });
-	} catch (e) {
+	} catch (e: unknown) {
 		console.error(e);
-		res.json({ success: false, error: e.toString() });
+		res.json({ success: false, error: (<Error>e).toString() });
 	}
 }
