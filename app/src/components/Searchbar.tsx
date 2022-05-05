@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { CgSearch, AiOutlineLoading3Quarters } from "react-icons/all";
-import { apiroot } from "../../manifest.json";
+import { base, apiroot } from "../../manifest.json";
 
 export type SearchbarProps = {
     setState: React.Dispatch<React.SetStateAction<InternalState>>;
@@ -27,7 +27,7 @@ export default function Searchbar({ setState, state }: SearchbarProps): JSX.Elem
 		await fetch(apiroot + "/validate?url=" + encodeURIComponent(value))
 			.then(res => res.json())
 			.then(state => {
-				if (state && state.success) window.history.pushState(null, "", "/" + state.info.videoDetails.videoId);
+				if (state && state.success) window.history.pushState(null, "", base + state.info.videoDetails.videoId);
 				setState(state);
 				document.getElementById("banner")!.style.opacity = "1";
 			});
