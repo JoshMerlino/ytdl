@@ -1,32 +1,32 @@
 {
-    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-    "name": "My App",
-    "short_name": "My App",
-    "description": "My App description",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
-    "orientation": "portrait",
-    "base": "/",
-    "apiroot": "https://api.joshmerlino.me/ytdl",
-    "id": "0x16a190429da311ec8cf000155d1b1170",
-    "icons": [
-        {
-            "src": "/icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "/splash_icon.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "/icon-512-maskable.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-        }
-    ]
+	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"name": "YouTube Downloader",
+	"short_name": "YTDL",
+	"description": "Download youtube videos for free.",
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff",
+	"orientation": "portrait",
+	"base": "/",
+	"apiroot": "https://api.joshmerlino.me/ytdl",
+	"id": "0x16a190429da311ec8cf000155d1b1170",
+	"icons": [
+		{
+			"src": "/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/splash_icon.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/icon-512-maskable.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
 }

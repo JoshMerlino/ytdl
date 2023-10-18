@@ -49,12 +49,6 @@ export default defineConfig({
 		hmr: {
 			protocol: "ws",
 			host: "localhost"
-		},
-		proxy: {
-			"/api": {
-				target: `http://localhost:${process.env.PORT || pjson.webserver.http.port}`,
-				changeOrigin: true
-			}
 		}
 	},
 	build: {
